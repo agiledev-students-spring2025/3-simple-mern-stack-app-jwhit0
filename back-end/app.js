@@ -78,5 +78,19 @@ app.post('/messages/save', async (req, res) => {
   }
 })
 
+// a route to handle About Us content
+app.get('/about', async (req, res) => {
+  try {
+    const aboutData = {
+      bio: "Hello, my name is James Whitten. I am a student from New York studying computer science at NYU CAS. I enjoy playing video games and learning about computers, web development, and looking at and working with data. I am interested in databases and backend development using Python and Flask. I enjoy solving problems, whether through programming or analyzing datasets. In my spare time, I enjoy listening to music, playing the cello, and watching documentaries and dramas. I also like exploring new technologies and learning about different cultures.",
+      photoURL:"https://lh3.googleusercontent.com/a/ACg8ocKVCt8wbdg7EOr-EauuLK--FxwSOxKCMjMBBkVs8DQxLHM4AA=s288-c-no"
+    };
+    res.status(200).json(aboutData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({message: "failed to load"});
+  }
+})
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
